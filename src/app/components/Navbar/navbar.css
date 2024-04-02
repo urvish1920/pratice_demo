@@ -1,0 +1,67 @@
+/* Base styles for navbar */
+.navbar {
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    grid-template-columns: 20% 80%;
+    align-items: center; 
+    height: 9vh;
+    padding: 0 20px; 
+    margin-left: 20vh;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.list{
+    display: flex;
+    justify-content: center;
+    margin-left: 15vh;
+}
+
+.navList {
+    display: flex;
+    justify-content: center;
+}
+
+
+.navLink {
+    color: black;
+    text-align: center;
+    font-weight: normal; 
+    font-size: 1.2rem;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navLink:hover {
+    font-weight: bold;
+}
+
+.logo-image {
+    margin-top: 10px;
+}
+
+.active{
+    font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column; 
+        height: auto; 
+    }
+
+    .navList {
+        flex-direction: column; 
+    }
+
+    .navItem {
+        margin: 10px 0; 
+    }
+
+    .logo-image {
+        margin: 10px auto; 
+    }
+}

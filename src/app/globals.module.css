@@ -1,0 +1,60 @@
+.home {
+    background-color: darkslategrey; 
+    width: 100vw;
+    height: 100vh;
+    background-color: darkslategrey;
+    width: 100vw;
+    display: flex;
+    height: 91vh;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.homeheading {
+    color: white;
+    margin-left: 5%;
+    margin-top: 8%;
+}
+.h1 {
+    color: white;
+    margin-top: 2%;
+    margin-left: 5%;
+    font-size: 60px;
+}
+
+.inputfield1 {
+    width: 200px;
+    height: 50px;
+    font-size: 15px;
+    margin-left: 5%;
+    margin-right: 0;
+    border-radius: 8px;
+    font-size: weight;
+    border: none;
+}
+
+.inputfield2 {
+    width: 200px;
+    height: 50px;
+    margin-left: 0%;
+    font-size: 15px;
+    border-radius: 8px;
+    font-size: weight;
+    border: none;
+}
+
+.inputgroup {
+    display: flex;
+    margin-top: 10px;
+}
+
+.inputgroup input {
+    margin-right: 10px;
+}
+/* 
+.button {
+    width: 200px;
+    height: 55px;
+    font-size: 20px;
+    font-weight: weight;
+} */

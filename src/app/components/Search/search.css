@@ -1,0 +1,44 @@
+.inputfield-1 {
+    width: 200px;
+    height: 50px;
+    font-size: 15px;
+    margin-left: 5%;
+    margin-right: 0;
+    border-radius: 8px;
+    font-size: weight;
+    border: none;
+}
+
+.inputfield-2 {
+    width: 200px;
+    height: 50px;
+    margin-left: 0%;
+    font-size: 15px;
+    border-radius: 8px;
+    font-size: weight;
+    outline: none;
+    border: none;
+}
+
+.input-group {
+    display: flex;
+    margin-top: 10px;
+}
+
+.input-group input {
+    margin-right: 10px;
+}
+
+.searchButton{
+    width: 200px;
+    height: 55px;
+    font-size: 20px;
+    font-weight: weight;
+    border-radius: 5px;
+    border: none;
+}
+
+::-webkit-input-placeholder {
+    font-size: 16px;
+    padding-left: 20px;
+}
