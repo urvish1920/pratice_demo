@@ -1,11 +1,9 @@
-
 .heading {
     font-size: 30px;
     margin-top: 5%;
     text-align: center;
     color: darkslategrey
 }
-
 .otcenter{
     display: flex;
     justify-content: center;
@@ -14,25 +12,12 @@
     width: 50%;
     height: 500px;
     display: grid;
-    grid-template-rows: 20% 40% 50%;
-}
-
-.request{
-    margin-left: 30px;
-    margin-top: 20px;
-}
-
-.bookingRequest{
-    margin-top: 5px;
-    color: rgb(19, 119, 153);
+    grid-template-rows: 40% 12% 25% 15% 10% 15% 10%;
 }
 .replay{
-    font-size: 12px;
+    font-size: 15px;
     margin-top: 2px;
     font-weight: 200;
-    background: none;
-    border: none;
-    margin-left: 0px;
 }
 .notification{
     margin-top: 5px;
@@ -43,7 +28,6 @@
     border-top: 1px solid lightgray;
     width: 100%;
 }
-
 .date{
     margin-top: 30px;
     margin-left: 20px;
@@ -53,6 +37,10 @@
 .col {
     display: flex;
     flex-direction: row;
+}
+.loccol{
+    display: grid;
+    grid-template-rows: 30% 10%;
 }
 .inneruptime{
     margin-top: 18px;
@@ -66,7 +54,6 @@
     font-weight: 600;
     color:darkslategrey ;
 }
-
 .divider{
     display: flex;
     flex-direction: column;
@@ -95,13 +82,11 @@
     margin-left: 20px;
     margin-right:20px;
 }
-
 .line{
     height: 60px;
     background-color: darkslategrey;
     width: 3px;
 }
-
 .innerupplace{
     margin-top: 15px;
     margin-left: 5px;
@@ -120,22 +105,24 @@
     justify-content: space-between;
 }
 
-.co_travellers{
-    margin-top: 10px;
+.priceText{
+    margin-top: 20px;
     margin-left: 20px;
-    font-weight: 600;
-    color:darkslategrey ;
+    font-weight: light;
+    color:grey ;
+    font-weight: 400;
 }
 
-.space_between{ 
-    display: flex;
-    justify-content: space-between;
+.price{
+    margin-top: 20px;
+    margin-right: 30px;
+    font-weight: 600;
+    color:darkslategrey ;
 }
 
 .username{
     margin-right: 30px;
     font-weight: 600;
-    font-size: 20px;
     color:darkslategrey ;
     margin-top: 20px;
     margin-left: 20px;
@@ -144,19 +131,48 @@
     margin-top: 15px;
     margin-right: 30px;
 }
+
 .avater{
     border-radius: 50%;
     border: solid 0.5px black;
 }
-.passangerName{
+
+.chatButton{
+    border: none;
+    background-color: none!important;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
+    text-transform: none!important;
+}
+
+.chat{
+    display: flex;
+    flex-direction: row;
+}
+
+.chatMessage{
+    margin-left: 10px;
+}
+
+.carName{
     margin-top: 20px;
-    margin-left: 30px;
+    margin-left: 20px;
     font-weight: 600;
     color:darkslategrey ;
 }
-.profile{
-    margin-top: 20px;
-    margin-right: 30px;
+.caricon{
+    margin-top: 4px;
+    margin-right: 28px;
+}
+.cotravellarText{
+    margin-top: 10px;
+    margin-left: 20px;
     font-weight: 600;
     color:darkslategrey ;
+}
+
+.coimg{
+    margin-top: 10px;
+    margin-right: 32px;
 }

@@ -12,7 +12,7 @@ interface User {
     username: string;
 }
 
-const Signup: React.FC = () => {
+export default function signup() {
     const [user, setUser] = useState<User>({ email: "", password: "", username: "" });
     const [buttonDisabled, setButtonDisable] = useState<boolean>(false);
     const [loading, setLoading] = useState<boolean>(false);
@@ -53,14 +53,13 @@ const Signup: React.FC = () => {
     }, [user]);
 
     return (
-        <>
          <div className={styles.mainconatiner}>
-            <div className={styles.innarcontainer}>
-                <div className={styles.outer}>
+            <div className={styles.signupInnerContainer}>
+                <div className={styles.signupInsideItem}>
                     <h1>{loading ? "Processing ..." : "signup"}</h1>
                     <label>username</label>
                     <input
-                        className={styles.input}
+                        className={styles.inputField}
                         id="username"
                         type="text"
                         value={user.username}
@@ -68,7 +67,7 @@ const Signup: React.FC = () => {
                         placeholder="username" />
                     <label>email</label>
                     <input
-                        className={styles.input}
+                        className={styles.inputField}
                         id="email"
                         type="text"
                         value={user.email}
@@ -76,7 +75,7 @@ const Signup: React.FC = () => {
                         placeholder="email" />
                     <label>password</label>
                     <input
-                        className={styles.input}
+                        className={styles.inputField}
                         id="password"
                         type="password"
                         value={user.password}
@@ -84,13 +83,11 @@ const Signup: React.FC = () => {
                         placeholder="password" />
 
                     <button onClick={onSignup} disabled={buttonDisabled}>{loading ? "Processing ..." : "Signup"}</button>
-                    <Link href="/login" className={styles.loginlink}>login page</Link >
+                    <Link href="/signin" className={styles.loginLink}>SignIn page</Link >
                 </div>
             </div >
             <ToastContainer />
         </div>
-        </> 
     )
 }
 
-export default Signup;

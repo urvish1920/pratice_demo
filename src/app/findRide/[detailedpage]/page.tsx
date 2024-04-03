@@ -1,52 +1,48 @@
 "use client"
-import { useEffect} from 'react';
+import { useEffect, useState} from 'react';
 import { Button } from '@mui/material';
 import { useRouter } from 'next/navigation';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchDataSuccess, selectPlanRide } from '@/app/GlobalRedux/car-polling/RideplanSlice';
+import { fetchDataSuccess, selectfindRide } from '@/app/GlobalRedux/car-polling/findPlanRideSlice';
 import Image from 'next/image';
 import profileImage from '../../assert/avater.png';
 import icon from '../../assert/icon.png';
 import car from '../../assert/car.png';
 import styles from './fullDetails.module.css';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import FormattedDate from '@/app/components/Formate/FormateDate';
 
 export default function FullDetailRide({params}:{params:{detailedpage:string}}) {
     const id = params.detailedpage 
     const dispatch = useDispatch();
-    const rideDetails = useSelector(selectPlanRide);
-    console.log(rideDetails);
-    
+    const rideDetails = useSelector(selectfindRide);
+    console.log(rideDetails)
+    const [isPending , setIsPending] = useState(true);
     const router = useRouter();
 
     useEffect(() => {
-        async function fetchAllData() {
-            try {
-                const response = await fetch(`http://localhost:8000/publish-new-ride/getOne/${id}`, {
-                    credentials: 'include',
-                });
-                const data = await response.json();
-                console.log(JSON.parse(JSON.stringify(data)));
-                dispatch(fetchDataSuccess(data));
-                if (response.ok && response.status === 200) {
-                    console.log("successfully get")
-                } else {
-                    console.log(response);
-                    toast.error("Invalid Url", { position: 'top-center', hideProgressBar: true });
-                }
-            } catch (error: any) {
-                console.log("Login failed", error.message);
-                toast.error(error.message, { position: 'top-center', hideProgressBar: true });
-            }
-        }
-        fetchAllData()
+        setTimeout(() =>{
+            fetch(`http://localhost:8000/publish-new-ride/getOne/${id}`, {
+                    credentials: 'include'
+                }).then((res) => {
+                    if (res.status === 200) {
+                        return res.json();
+                    } else {
+                        throw new Error(`Server responded with status ${res.status}`);
+                    }
+                })
+                .then((data) => {
+                    dispatch(fetchDataSuccess(data));
+                    setIsPending(false);
+                })
+                .catch(err => {
+                    console.log(err.message)
+                })
+        })
     }, [])
 
     return (
         <div>  
-            {rideDetails.length > 0 ? (
+            {isPending? 'loading...':(
                 rideDetails.map((item,index) => (
                     <div key={index}>
                         <h1 className={styles.heading}><FormattedDate date={new Date(item.date)} /></h1>
@@ -159,10 +155,7 @@ export default function FullDetailRide({params}:{params:{detailedpage:string}}) 
                         </div>
                     </div>
                 ))
-            ) : (
-                <div>Loading...</div>
             )}
-            <ToastContainer />
         </div>
     );
 }

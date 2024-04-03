@@ -2,8 +2,6 @@
 import React, { useEffect, useState } from 'react';
 import Styles from './listView.module.css'
 import { useRouter } from 'next/navigation';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import Image from 'next/image'
 import profileImage from '../assert/avater.png'
 
@@ -24,31 +22,36 @@ export interface findState {
 export default function findRide() {
     const [sortBy, setSortBy] = useState('');
     const [allRide, setAllRide] = useState<findState[]>([]);
+    const [isPending , setIsPending] = useState(true);
     const router = useRouter();
     const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setSortBy(event.target.value);
     };
 
     useEffect(() => {
-        async function fetchAllData() {
-            try {
-                const response = await fetch('http://localhost:8000/publish-new-ride/getAllPublish', {
-                    credentials: 'include',
-                });
-                const data :  findState[] = await response.json();
-                setAllRide(data)
-                if (response.ok && response.status === 200) {
-                    console.log("successfully get")
-                } else {
-                    console.log(response);
-                    toast.error("There is some Problem", { position: 'top-center', hideProgressBar: true });
-                }
-            } catch (error: any) {
-                console.log("Login failed", error.message);
-                toast.error(error.message, { position: 'top-center', hideProgressBar: true });
-            }
-        }
-        fetchAllData()
+        setTimeout(() =>{
+            const fetchTimeout = setTimeout(() => {
+                setIsPending(false);
+                console.log("Server is not responding. Please try again later.");
+            }, 5000);
+            fetch('http://localhost:8000/publish-new-ride/getAllPublish', {
+                    credentials: 'include'
+                }).then((res) => {
+                    if (res.status === 200) {
+                        return res.json();
+                    } else {
+                        throw new Error(`Server responded with status ${res.status}`);
+                    }
+                })
+                .then((data) => {
+                    setAllRide(data);
+                    setIsPending(false);
+                })
+                .catch(err => {
+                    clearTimeout(fetchTimeout); 
+                    console.log(err.message);
+                })
+        })
     }, [])
     return (
         <div className={Styles.planRide}>
@@ -60,7 +63,7 @@ export default function findRide() {
                     <option value="option2">Passenger</option>
                 </select>
             </div>
-            {
+            { isPending ? "loading ....." :
                 allRide.map((item, index) => {
                     const totalPassenger = item.passenger;
                     
@@ -110,7 +113,7 @@ export default function findRide() {
                                         src={profileImage}
                                         className={Styles.avater}
                                         width={40}
-                                        height={32}
+                                        height={35}
                                         alt="Picture of the author"
                                         />
                                     </div>
@@ -126,7 +129,6 @@ export default function findRide() {
                 } 
                 )
             }
-            <ToastContainer />
         </div>
         
     );

@@ -1,12 +1,12 @@
-.mainconatiner {
-    display: flex;
-    justify-content: center;
+.mainconatiner{
     background-color: darkslategrey; 
     width: 100vw;
     height: 100vh;
+    display: flex;
+    justify-content: center;
 }
 
-.signupInnerContainer {
+.loginInnerContainer {
     height: 50vh;
     width: 40vh;
     border-radius: 10px;
@@ -18,7 +18,7 @@
     align-items: center;
 }
 
-.signupInsideItem {
+.insideContainLogin {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -32,7 +32,8 @@
     outline: none;
 }
 
-.loginLink {
+
+.signupLink {
     color: black;
     text-decoration: none;
     margin-top: 10px;

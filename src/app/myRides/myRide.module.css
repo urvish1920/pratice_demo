@@ -20,44 +20,43 @@
 }
 .outerContainer {
     width: 50%;
-    height: 180px;
+    height: 220px;
     display: grid;
-    grid-template-columns: 80% 20%;
-    grid-template-rows: 70% 20%;
+    grid-template-rows: 10% 70% 20%;
     border-radius: 10px;
     border: 1px solid #ccc;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 2vh;
 }
-.col20{
-    padding: 5vh 5vh;
+
+.topcontainer{
     display: flex;
-    flex-direction: column;
-    font-weight: 600;
-    color:darkslategrey ;
-    justify-content: space-between;
+    flex-direction: row;
 }
 
-.col80 .row:nth-child(1){
-    display: flex;
+.statusText{
+    margin-left: 10%;
+    margin-top: 5px;
+    font-weight: 400;
+    font-size: 15px;
+    color:rgb(110, 107, 107) ;
 }
-.col80 .row:nth-child(2){
-    display: flex;
+.dateText{
+    margin-left: 15px;
+    margin-top: 5px;
+    font-weight: 600;
+    color:darkslategrey ;
+    margin-left: 25%;
 }
 .inneruptime{
-    margin-top: 10px;
+    margin-top: 18px;
     margin-left: 15px;
     font-weight: 600;
     color:darkslategrey ;
 }
-.innertotalhours{
-    margin-top: 10px;
-    margin-left: 25px;
-    font-weight: 600;
-    color:darkslategrey ;
-}
+
 .innerdowntime{
-    margin-top: 10px;
+    margin-top: 35px;
     margin-left: 15px;
     font-weight: 600;
     color:darkslategrey ;
@@ -76,7 +75,7 @@
     border-style: solid;
     border-color: darkslategrey;
     border-width: 2px;
-    margin-top: 15px;
+    margin-top: 22px;
     margin-left: 20px;
     margin-right:10px;
 }
@@ -111,7 +110,7 @@
 }
 
 .innerupplace{
-    margin-top: 10px;
+    margin-top: 15px;
     font-weight: 600;
     color:darkslategrey ;
 }

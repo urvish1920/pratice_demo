@@ -1,17 +1,17 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Styles  from "./login.module.css"
+import Styles  from "./signin.module.css"
 import Link from "next/link";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { usePathname } from 'next/navigation';
+
 
 interface User {
     email: string;
     password: string;
 }
 
-const LoginPage: React.FC = () => {
+export default function signIn() { 
 
 
     const [user, setUser] = useState<User>({
@@ -56,13 +56,13 @@ const LoginPage: React.FC = () => {
     }, [user]);
 
     return (
-        <div className={Styles.Container}>
-            <div className={Styles.innarcontainer}>
-                <div className={Styles.outer}>
-                    <h1>{loading ? "Processing" : "Login"}</h1>
+        <div className={Styles.mainconatiner}>
+            <div className={Styles.loginInnerContainer}>
+                <div className={Styles.insideContainLogin}>
+                    <h1>{loading ? "Processing" : "SignIn"}</h1>
                     <label>email</label>
                     <input
-                        className={Styles.input}
+                        className={Styles.inputField}
                         id="email"
                         type="text"
                         value={user.email}
@@ -70,15 +70,15 @@ const LoginPage: React.FC = () => {
                         placeholder="email" />
                     <label>password</label>
                     <input
-                        className={Styles.input}
+                        className={Styles.inputField}
                         id="password"
                         type="password"
                         value={user.password}
                         onChange={(e) => setUser({ ...user, password: e.target.value })}
                         placeholder="password" />
 
-                    <button className="input" onClick={onLogin} disabled={buttonDisabled}>{loading ? "Processing ..." : "Login"}</button>
-                    <Link href="/signup" className={Styles.loginlink}>signup page</Link >
+                    <button className="input" onClick={onLogin} disabled={buttonDisabled}>{loading ? "Processing ..." : "Signin"}</button>
+                    <Link href="/signup" className={Styles.signupLink}>signup page</Link >
                 </div>
             </div>
             <ToastContainer />
@@ -86,4 +86,3 @@ const LoginPage: React.FC = () => {
     );
 };
 
-export default LoginPage;

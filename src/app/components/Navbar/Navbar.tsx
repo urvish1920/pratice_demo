@@ -35,7 +35,11 @@ const Navbar = () => {
                     <Link href="/planRide" className={`navLink ${pathname.startsWith('/planRide') ? 'active' : ''}`}>Plan Ride</Link >
                 </li>
                 </div>
-                
+                <div className="navItem">
+                <li>
+                    <Link href="/myRides" className={`navLink ${pathname.startsWith('/myRides') ? 'active' : ''}`}>My Ride</Link >
+                </li>
+                </div>
             </ul>
         </div>
    

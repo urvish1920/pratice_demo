@@ -19,7 +19,7 @@ export interface PublishState {
     noteMore: string;
 }
 
-const Form = () => {
+const Form: React.FC = () => {
     const router = useRouter();
     const [publish, setPublish] = useState<PublishState>({
         pickupLocation: "",

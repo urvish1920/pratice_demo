@@ -16,16 +16,16 @@ interface RideData {
     noteMore: string;
 }
 
-interface FindRideState {
+interface PlanRideState {
   planRide: RideData[];
 }
 
-const initialState: FindRideState = {
+const initialState: PlanRideState = {
   planRide: []
 };
 
-const findRideSlice = createSlice({
-  name: 'findRide',
+const planRideSlice = createSlice({
+  name: 'planRide',
   initialState,
   reducers: {
     fetchDataSuccess: (state, action: PayloadAction<RideData>) => {
@@ -34,8 +34,8 @@ const findRideSlice = createSlice({
   },
 });
 
-export const { fetchDataSuccess } = findRideSlice.actions;
+export const { fetchDataSuccess } = planRideSlice.actions;
 
-export const selectPlanRide = (state: RootState) => state.findRide.planRide;
+export const selectPlanRide = (state: RootState) => state.planRide.planRide;
 
-export default findRideSlice.reducer;
+export default planRideSlice.reducer;

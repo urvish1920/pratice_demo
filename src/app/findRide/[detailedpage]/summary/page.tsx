@@ -3,11 +3,11 @@ import styles from './summaryDetails.module.css'
 import FormattedDate from '@/app/components/Formate/FormateDate';
 import { useRouter } from 'next/navigation';
 import { useSelector } from 'react-redux';
-import { selectPlanRide } from '@/app/GlobalRedux/car-polling/RideplanSlice';
+import { selectfindRide } from '@/app/GlobalRedux/car-polling/findPlanRideSlice';
 
 export default function SummaryFindRide() {
     
-    const rideDetails = useSelector(selectPlanRide);
+    const rideDetails = useSelector(selectfindRide);
     const router = useRouter();
 
     return (
@@ -61,7 +61,7 @@ export default function SummaryFindRide() {
                     border: 'none',
                     marginLeft: '40%',
                     marginTop: '10px',
-                }}  onClick={() => {router.push(`summary/BookingDone`)}}>Book</button>
+                }}  onClick={() => {router.push('')}}>Book</button>
                         </div>
                        </div>
                     </div>

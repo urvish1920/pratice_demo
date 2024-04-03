@@ -3,9 +3,13 @@ import NotificationsNoneRoundedIcon from '@mui/icons-material/NotificationsNoneR
 import styles from './moreDetails.module.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useEffect, useState} from 'react';
+import { useEffect} from 'react';
 import FormattedDate from '@/app/components/Formate/FormateDate';
 import { useRouter } from 'next/navigation';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchDataSuccess, selectPlanRide } from '@/app/GlobalRedux/car-polling/planRideDetialsSlice';
+import Image from 'next/image';
+import profileImage from '../../../app/assert/avater.png';
 
 export interface PublishState {
     _id:string;
@@ -25,9 +29,9 @@ export default function planRideDetails({params}:{params:{slug:string}}) {
     const id = params.slug
     console.log(id)
     const router = useRouter();
-    const [planRide ,setPlanRide] = useState<PublishState[]>([]);
-
-    console.log("Plan Ride: " + JSON.stringify(planRide))
+    const dispatch = useDispatch();
+    const rideDetails = useSelector(selectPlanRide);
+    console.log(rideDetails)
     
     useEffect(() => {
         async function fetchAllData() {
@@ -35,17 +39,15 @@ export default function planRideDetails({params}:{params:{slug:string}}) {
                 const response = await fetch(`http://localhost:8000/publish-new-ride/getOne/${id}`, {
                     credentials: 'include',
                 });
-                const data = await response.json();
-                setPlanRide([...planRide,data])
                 if (response.ok && response.status === 200) {
-                    console.log("successfully get")
-                    console.log(planRide)
+                    const data = await response.json();
+                    // setPlanRide([...planRide,data])
+                    dispatch(fetchDataSuccess(data));
                 } else {
-                    console.log(response);
-                    toast.error("Invalid Url", { position: 'top-center', hideProgressBar: true });
+                    toast.error("Any Problem", { position: 'top-center', hideProgressBar: true });
                 }
             } catch (error: any) {
-                console.log("Login failed", error.message);
+                console.log("PlanRide failed", error.message);
                 toast.error(error.message, { position: 'top-center', hideProgressBar: true });
             }
         }
@@ -57,7 +59,7 @@ export default function planRideDetails({params}:{params:{slug:string}}) {
         <div>  
             <h1 className={styles.heading}>Ride plan</h1>
          {
-            planRide.map((item,index) => {
+            rideDetails.map((item,index) => {
                 return(
                     <div className={styles.otcenter} key={index}>
                     <div className={styles.outercontainer}>
@@ -93,10 +95,19 @@ export default function planRideDetails({params}:{params:{slug:string}}) {
                         </div>
                         <div className={styles.lastComponent}>
                             <div className={styles.linebetween} />
-                            <div className={styles.passanger}>
-                                <div className={styles.passangerName}>Urvish</div>
-                                <div className={styles.profile}>Image</div>
-                            </div>
+                            <div className={styles.co_travellers}>co-travellers</div>
+                            <div className={styles.space_between}>
+                                        <div className={styles.username}>yash</div>
+                                        <div className={styles.img}> 
+                                            <Image
+                                                src={profileImage}
+                                                className={styles.avater}
+                                                width={40}
+                                                height={34}
+                                                alt="Picture of the author"
+                                            />
+                                        </div>
+                        </div>
                         </div>
                        </div>
                     </div>
